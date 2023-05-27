@@ -21,6 +21,7 @@ class Header extends React.Component <IProps,IState> {
     return {favoritefood: props.favoritefood };
   }
    render() {
+    console.log('render')
     return (
       <h1>My Favorite Food is {this.state.favoritefood}</h1>
     );

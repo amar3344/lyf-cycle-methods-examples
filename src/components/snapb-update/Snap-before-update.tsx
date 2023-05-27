@@ -16,25 +16,28 @@ class Header extends React.Component <IProps,IState> {
     this.state = {favoritefood: "rice",var:""};
   }
   componentDidMount():void {
+      console.log("hi")
+  }
+  timer =() => {
     setTimeout(() => {
       this.setState({favoritefood: "pizza"})
-    }, 1000)
+    }, 3000)
   }
-  shouldComponentUpdate(nextProps: Readonly<IProps>, nextState: Readonly<IState>, nextContext: any): boolean {
-    if(nextState.var !== this.state.var )
-    return true
-    else 
-    return false
-  }
-  getSnapshotBeforeUpdate(prevProps:IProps, prevState:IState) {
-    // console.log(this.state.favoritefood)
-    // const a  = this.setState(p =>({favoritefood : p.favoritefood}))
-    // if(prevState.var !== this.state.var )
-    this.setState({var : "Before the update, the favorite was " + this.state.favoritefood})
-    
-  }
+  // shouldComponentUpdate(nextProps: Readonly<IProps>, nextState: Readonly<IState>, nextContext: any): boolean {
+  //   if(nextState.var !== this.state.var )
+  //   return true
+  //   else 
+  //   return false
+  // }
+
+  // getSnapshotBeforeUpdate(prevProps:IProps, prevState:IState) {
+  //   console.log(prevState.favoritefood)
+  //   // const a  = this.setState(p =>({favoritefood : p.favoritefood}))
+  //    if(prevState.var !== this.state.var )
+  //   this.setState({var : "Before the update, the favorite was " + this.state.favoritefood})
+  // }
   componentDidUpdate(prevProps: Readonly<IProps>, prevState: Readonly<IState>, snapshot?: any): void {
-    // console.log(this.state.favoritefood)
+    console.log(prevState.favoritefood)
     // if(prevState.var !== this.state.var )
     this.setState({var : "The updated favorite food is " + this.state.favoritefood})
   }
@@ -48,6 +51,7 @@ class Header extends React.Component <IProps,IState> {
         <h1>My Favorite Food is {this.state.favoritefood}</h1>
         <div id="div1">{this.state.var}</div>
         <div id="div2">{this.state.var}</div>
+        <button onClick={this.timer}>New item</button>
       </div>
     );
   }
